@@ -28,7 +28,7 @@ Animated denoising (full 1000-step reverse process):
 
 At each timestep $t$, Gaussian noise is added according to a variance schedule $\beta_t$:
 
-$$q(\mathbf{x}_t \mid \mathbf{x}_{t-1}) = \mathcal{N}\left(\mathbf{x}_t;\; \sqrt{1-\beta_t}\mathbf{x}_{t-1},\; \beta_t\mathbf{I}\right)$$
+$$q(\mathbf{x}_t \mid \mathbf{x}_{t-1}) = \mathcal{N}\left(\mathbf{x}_t; \sqrt{1-\beta_t}\mathbf{x}_{t-1}, \beta_t\mathbf{I}\right)$$
 
 **Linear variance schedule** — $\beta_t$ increases linearly from $\beta_1 = 10^{-4}$ to $\beta_T = 0.02$:
 
@@ -46,7 +46,7 @@ alphas = 1.0 - betas                          # α_t = 1 - β_t
 
 Rather than applying noise step-by-step, we can jump directly to any timestep $t$ using the cumulative product $\bar{\alpha}_t = \prod_{s=1}^{t} \alpha_s$:
 
-$$q(\mathbf{x}_t \mid \mathbf{x}_0) = \mathcal{N}\left(\mathbf{x}_t;\; \sqrt{\bar{\alpha}_t}\mathbf{x}_0,\; (1-\bar{\alpha}_t)\mathbf{I}\right)$$
+$$q(\mathbf{x}_t \mid \mathbf{x}_0) = \mathcal{N}\left(\mathbf{x}_t; \sqrt{\bar{\alpha}_t}\mathbf{x}_0, (1-\bar{\alpha}_t)\mathbf{I}\right)$$
 
 Sampling via the reparameterization trick:
 
@@ -93,7 +93,7 @@ class SinusoidalPositionEmbedding(nn.Module):
 
 The noise-prediction network $\boldsymbol{\epsilon}_\theta(\mathbf{x}_t, t)$ is a U-Net with time-conditioned residual blocks:
 
-$$\boldsymbol{\epsilon}_\theta(\mathbf{x}_t, t) = \text{Decoder}\Big(\text{Encoder}(\mathbf{x}_t),\; \text{TimeEmbed}(t)\Big)$$
+$$\boldsymbol{\epsilon}_\theta(\mathbf{x}_t, t) = \text{Decoder}\Big(\text{Encoder}(\mathbf{x}_t), \text{TimeEmbed}(t)\Big)$$
 
 | Stage | Resolution | Channels |
 |-------|-----------|----------|
