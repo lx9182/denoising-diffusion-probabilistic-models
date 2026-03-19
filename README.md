@@ -30,7 +30,7 @@ At each timestep $t$, Gaussian noise is added according to a variance schedule $
 
 $$
 q(\mathbf{x}_t \mid \mathbf{x}_{t-1}) =
-\mathcal{N}\left(\mathbf{x}_t; \sqrt{1-\beta_t}\mathbf{x}_{t-1}, \beta_t\mathbf{I}\right)
+\mathcal{N}\left(\mathbf{x}_t; \sqrt{1-\beta_t} \mathbf{x}_{t-1}, \beta_t\mathbf{I}\right)
 $$
 
 **Linear variance schedule** — $\beta_t$ increases linearly from $\beta_1 = 10^{-4}$ to $\beta_T = 0.02$:
@@ -47,7 +47,7 @@ alphas = 1.0 - betas                          # α_t = 1 - β_t
 
 ### 2. Closed-Form Noising (Reparameterization)
 
-Rather than applying noise step-by-step, we can jump directly to any timestep $t$ using the cumulative product ${\bar{\alpha}}_t = \prod_{s=1}^{t} \alpha_s$:
+Rather than applying noise step-by-step, we can jump directly to any timestep $t$ using the cumulative product $\overline{\alpha}_t = \prod_{s=1}^{t} \alpha_s$.
 
 $$q(\mathbf{x}_t \mid \mathbf{x}_0) = \mathcal{N}\left(\mathbf{x}_t; \sqrt{\bar{\alpha}_t}\mathbf{x}_0, (1-\bar{\alpha}_t)\mathbf{I}\right)$$
 
