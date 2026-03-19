@@ -28,7 +28,7 @@ Animated denoising (full 1000-step reverse process):
 
 At each timestep $t$, Gaussian noise is added according to a variance schedule $\beta_t$:
 
-$$q(\mathbf{x}_t \mid \mathbf{x}_{t-1}) = \mathcal{N}\left(\mathbf{x}_t; \sqrt{1-\beta_t} \mathbf{x}_{t-1}, \beta_t\mathbf{I}\right)$$
+$$q(\mathbf{x}_t \mid \mathbf{x}_{t-1}) = \mathcal{N}\left(\mathbf{x}_t; \sqrt{1}\mathbf{x}_{t-1}, \beta_t\mathbf{I}\right)$$
 
 **Linear variance schedule** — $\beta_t$ increases linearly from $\beta_1 = 10^{-4}$ to $\beta_T = 0.02$:
 
