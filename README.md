@@ -44,8 +44,8 @@ alphas = 1.0 - betas                          # α_t = 1 - β_t
 
 ### 2. Closed-Form Noising (Reparameterization)
 
-Rather than applying noise step-by-step, we can jump directly to any timestep $t$ using the cumulative product $\bar{\alpha}_{t} = \prod_{s=1}^{t} \alpha_{s}$:
-
+Rather than applying noise step-by-step, we can jump directly to any timestep $t$ using the cumulative product:
+$$\bar{\alpha}_t = \prod_{s=1}^{t} \alpha_s$$
 $$q(\mathbf{x}_t \mid \mathbf{x}_0) = \mathcal{N}\left(\mathbf{x}_t; \sqrt{\bar{\alpha}_t}\mathbf{x}_0, (1-\bar{\alpha}_t)\mathbf{I}\right)$$
 
 Sampling via the reparameterization trick:
